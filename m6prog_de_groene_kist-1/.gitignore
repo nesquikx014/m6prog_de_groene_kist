@@ -1,0 +1,16 @@
+.env
+.env.local
+.env.*.local
+vendor/
+node_modules/
+.DS_Store
+*.log
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.cache/
+tmp/
+mariadb_data/
+.php_cs.cache
