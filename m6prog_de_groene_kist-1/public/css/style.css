@@ -1,0 +1,41 @@
+/* Basic styles for De Groente Boer demo site */
+:root{
+    --brand-green:#2f7a2f;
+    --accent:#f7b733;
+    --bg:#f7f7f5;
+    --text:#222;
+}
+*{box-sizing:border-box}
+body{font-family:Segoe UI, Roboto, Arial, sans-serif; margin:0; color:var(--text); background:var(--bg)}
+.container{max-width:980px; margin:0 auto; padding:20px}
+.site-header{background:linear-gradient(90deg,var(--brand-green),#4aa44a); color:#fff}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;text-decoration:none;color:inherit}
+.logo{width:64px;height:64px;margin-right:12px}
+.site-title{margin:0;font-size:1.25rem}
+.site-tagline{margin:0;font-size:0.85rem;opacity:0.95}
+.main-nav{display:flex;gap:12px}
+.nav-link{color:#fff;text-decoration:none;padding:10px;border-radius:6px}
+.nav-link:hover{background:rgba(255,255,255,0.08)}
+.nav-link.active{background:rgba(0,0,0,0.12)}
+.hero{padding:28px 0}
+.hero .lead{font-size:1.1rem;color:#064a06}
+.offers{background:#fff;padding:16px;border-radius:8px;margin:16px 0}
+.offers-list{list-style:none;padding:0;margin:0}
+.offers-list li{padding:6px 0;border-bottom:1px dashed #eee}
+.products-grid{background:#fff;padding:16px;border-radius:8px;margin:16px 0}
+.product-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.product-item{background:#f0fff0;padding:10px;border-radius:6px}
+.contact-form form{display:grid;gap:8px}
+input,textarea{padding:8px;border:1px solid #ddd;border-radius:4px}
+button{background:var(--brand-green);color:#fff;border:0;padding:10px 14px;border-radius:6px;cursor:pointer}
+button:hover{opacity:0.95}
+.site-footer{background:#fff7ec;padding:20px 0;margin-top:24px}
+.footer-inner{display:flex;gap:20px}
+.footer-col{flex:1}
+.footer-bottom{text-align:center;padding-top:8px;color:#666}
+
+@media(max-width:700px){
+    .header-inner{flex-direction:column;align-items:flex-start;gap:12px}
+    .footer-inner{flex-direction:column}
+}

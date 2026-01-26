@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  php:
+    image: php:8.2-fpm
+    container_name: m6prog_digipost_php
+    volumes:
+      - './:/var/www/html'
+      - './docker/env/.env.digipost:/var/www/html/.env'
+    depends_on:
+      - mariadb
+
+  nginx:
+    image: nginx:latest
+    container_name: m6prog_digipost_nginx
+    ports:
+      - 8080:80
+    links:
+      - 'php'
+    volumes:
+      - './:/var/www/html'
+      - './docker/nginx/digipost.conf:/etc/nginx/conf.d/default.conf:ro'
+    depends_on:
+      - php
+
+  mariadb:
+    image: mariadb:latest
+    container_name: m6prog_digipost_db
+    environment:
+      MYSQL_DATABASE: m6prog_digipost
+      MYSQL_USER: digipost_user
+      MYSQL_PASSWORD: DigipostPass123
+      MYSQL_ROOT_PASSWORD: RootDigipost123
+    ports:
+      - 3309:3306
+    volumes:
+      - ./docker/sql-digipost/:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: m6prog_digipost_pma
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: digipost_user
+      PMA_PASSWORD: DigipostPass123
+    ports:
+      - "1089:80"
+
+volumes:
+  m6prog_digipost_dbdata:
