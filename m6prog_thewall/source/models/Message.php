@@ -1,11 +1,7 @@
 <?php
-// Message Model with dataclass-like structure
-                                                 
+
 require_once __DIR__ . '/../database.php';
 
-/**
- * MessageData - Dataclass for message data
- */
 class MessageData {
     public int $id;
     public string $author;
@@ -33,9 +29,6 @@ class MessageData {
         $this->is_deleted = $is_deleted;
     }
 
-    /**
-     * Create MessageData instance from database array
-     */
     public static function fromArray(array $data): self {
         return new self(
             id: (int)$data['id'],
@@ -49,9 +42,6 @@ class MessageData {
     }
 }
 
-/**
- * Message - Repository class for message operations
- */
 class Message {
     private $db;
     private $table = 'messages';
